@@ -1,8 +1,12 @@
 package rocks.zipcode.io.fundamentals;
 
 
+import rocks.zipcode.io.arrays.ArrayUtils;
+import rocks.zipcode.io.collections.PowerSet;
+
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 
 /**
  * @author leon on 10/01/2019.
@@ -13,19 +17,18 @@ public class StringUtils {
      * @return collection containing all permutations of casing of this string
      */
     public static Collection<String> getAllCasings(String string) {
+        ArrayList<String> output = new ArrayList<>();
         // get length of string
         // get range of length
+        Integer[] range = ArrayUtils.getRange(0, string.length() - 1);
         // get power-set of range
-
+        Set<Set<Integer>> powerSet = new PowerSet<Integer>(range).permute();
         // for every set in power-set
+        for(Set<Integer> indexSet : powerSet) {
             // uppercase indices of string using set
-
-        ArrayList<String> list = new ArrayList<>();
-
-        for (int i = 0; i < string.length(); i++) {
-           // list.add()
+            output.add(upperCaseIndices(string, indexSet.toArray(new Integer[indexSet.size()])));
         }
-        return null;
+        return output;
     }
 
     /**
