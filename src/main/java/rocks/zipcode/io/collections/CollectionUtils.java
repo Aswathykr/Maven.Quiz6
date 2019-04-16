@@ -34,10 +34,11 @@ public class CollectionUtils {
      * @param collections - collections to be combined
      * @return a single collection containing the aggregate contents of each collection passed in as an argument
      */
-    public static Collection<?> flatten(Collection<?>... collections) {
-        ArrayList<?> result = new ArrayList<>();
-        ArrayList<Collection<?>> input = new ArrayList<>(Arrays.asList(collections));
-        //input.forEach(values ->values.forEach(value->result.add(value)));
-        return null;
+    public static<E> Collection<? extends E> flatten(Collection<? extends E>... collections) {
+        ArrayList<? extends E> result = new ArrayList<>();
+        for(Collection collection : collections) {
+            result.addAll(collection);
+        }
+        return result;
     }
 }
