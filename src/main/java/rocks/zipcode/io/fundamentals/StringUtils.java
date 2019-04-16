@@ -1,6 +1,7 @@
 package rocks.zipcode.io.fundamentals;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -18,6 +19,12 @@ public class StringUtils {
 
         // for every set in power-set
             // uppercase indices of string using set
+
+        ArrayList<String> list = new ArrayList<>();
+
+        for (int i = 0; i < string.length(); i++) {
+           // list.add()
+        }
         return null;
     }
 
@@ -27,7 +34,11 @@ public class StringUtils {
      * @return near-identical string whose characters at specified indices are capitalized
      */
     public static String upperCaseIndices(String string, Integer... indices) {
-        return null;
+        String output = string;
+        for(Integer index : indices){
+            output = replaceAtIndex(output, Character.toUpperCase(output.charAt(index)), index );
+        }
+        return output;
     }
 
     /**
@@ -37,7 +48,9 @@ public class StringUtils {
      * @return near-identical string with `valueToBeInserted` inserted at `index`
      */
     public static String insertAtIndex(String stringToBeManipulated, String valueToBeInserted, Integer index) {
-        return null;
+        return stringToBeManipulated.substring(0, index)
+                + valueToBeInserted
+                + stringToBeManipulated.substring(index);
     }
 
     /**
@@ -47,6 +60,8 @@ public class StringUtils {
      * @return near-identical string with character at `index` replaced with `replacementValue`
      */
     public static String replaceAtIndex(String stringToBeManipulated, Character replacementValue, Integer index) {
-        return null;
+        return stringToBeManipulated.substring(0, index)
+                + replacementValue
+                + stringToBeManipulated.substring(index + 1);
     }
 }
